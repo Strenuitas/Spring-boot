@@ -1,33 +1,48 @@
-客户端请求 (HTTP Request)
-        │
-        ▼
+客户端请求：
+GET /api/shortlink/v1/user/has-username?username=zhangsan
+│
+▼
 ┌───────────────────────────┐
-│        Controller         │
-│ - 接收请求参数            │
-│ - 简单校验                │
-│ - 调用 Service 方法        │
+│ UserController │
+│ - @GetMapping 接收请求 │
+│ - @RequestParam("username")│
+│ - 调用 userService.hasUsername(username) │
 └───────────▲───────────────┘
-            │
-            ▼
+│
+▼
 ┌───────────────────────────┐
-│         Service           │
-│ - 实现核心业务逻辑        │
-│   （例如检查用户名是否存在）│
-│ - 可以处理事务            │
+│ UserService │
+│ (接口类型变量 userService)│
+│ - hasUsername(username) │
+│ - 调用 UserServiceImpl 实现│
 └───────────▲───────────────┘
-            │
-            ▼
+│
+▼
 ┌───────────────────────────┐
-│         Mapper            │
-│ - 继承 BaseMapper<T>      │
-│ - 执行 SQL 操作            │
+│ UserServiceImpl │
+│ - 实现业务逻辑 │
+│ - 构造 LambdaQueryWrapper │
+│ - 调用 baseMapper.selectOne(queryWrapper) │
 └───────────▲───────────────┘
-            │
-            ▼
+│
+▼
 ┌───────────────────────────┐
-│         数据库 (DB)       │
-│ - 存储实体数据            │
-│ - 提供查询/增删改支持      │
+│ UserMapper │
+│ - 继承 BaseMapper<UserDO> │
+│ - 执行 SQL 查询 │
+│ SELECT * FROM user │
+│ WHERE username = ? │
+└───────────▲───────────────┘
+│
+▼
+┌───────────────────────────┐
+│ 数据库 (DB) │
+│ - user 表 │
+│ - 查找 username=zhangsan │
 └───────────────────────────┘
+│
+▼
+返回结果：
+数据库 → Mapper → UserServiceImpl → UserService → Controller → 客户端
 
-返回结果：数据库 → Mapper → Service → Controller → 客户端
+true/false（用户名是否存在）
