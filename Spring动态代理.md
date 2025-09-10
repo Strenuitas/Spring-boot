@@ -53,6 +53,7 @@ class LogInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        //想在调用方法时候额外加一些东西，例如方法前面和结束加一个日志
         System.out.println("[日志] 调用方法: " + method.getName());
         Object result = method.invoke(target, args); // 调用目标对象方法
         System.out.println("[日志] 方法结束: " + method.getName());
