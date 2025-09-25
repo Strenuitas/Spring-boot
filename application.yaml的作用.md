@@ -21,3 +21,10 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mapper/*.xml
+
+### 例如
+
+##### @Value("${short-link.stats.locale.amap-key}")
+##### String str;
+##### System.out.println(str);
+#####  会输出 feac1e83c78a14a943174ed7e2a03a6c
