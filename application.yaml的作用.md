@@ -21,7 +21,7 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mapper/*.xml
-
+```
 ### 例如
 
 ##### @Value("${short-link.stats.locale.amap-key}")
