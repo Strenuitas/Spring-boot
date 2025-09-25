@@ -10,7 +10,8 @@
 
 
 ####  类似于这种
-`` #short-link:
+```java
+short-link:
   domain:
     default: nurl.ink:8001
   stats:
@@ -20,4 +21,3 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mapper/*.xml
-``
