@@ -4,4 +4,4 @@
 
 缓存是为了提高数据访问速度，避免频繁访问数据库，但如果攻击者故意请求缓存中不存在的数据，会导致缓存不命中，请求直接访问数据库
 
-[!avator](https://github.com/user-attachments/assets/e2b18ded-00c8-45a0-8944-2bc6f47ac54b)
+[!avatar](https://github.com/user-attachments/assets/e2b18ded-00c8-45a0-8944-2bc6f47ac54b)
